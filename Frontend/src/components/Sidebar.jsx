@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { FaHome, FaStore, FaUser, FaCog, FaSignInAlt } from "react-icons/fa";
+import { FaHome, FaStore, FaUser, FaCog, FaSignInAlt, FaTrophy } from "react-icons/fa";
 import { useGame } from "../state/GameContext.jsx";
 
 export default function Sidebar() {
@@ -15,22 +15,13 @@ export default function Sidebar() {
       </div>
 
       <nav className="nav flex-column gap-2">
-        <NavLink className={linkClass} to="/">
-          <FaHome /> <span>Inicio</span>
-        </NavLink>
-        <NavLink className={linkClass} to="/tienda">
-          <FaStore /> <span>Tienda</span>
-        </NavLink>
-        <NavLink className={linkClass} to="/perfil">
-          <FaUser /> <span>Perfil</span>
-        </NavLink>
-        <NavLink className={linkClass} to="/configuracion">
-          <FaCog /> <span>Configuración</span>
-        </NavLink>
+        <NavLink className={linkClass} to="/"><FaHome /> <span>Inicio</span></NavLink>
+        <NavLink className={linkClass} to="/tienda"><FaStore /> <span>Tienda</span></NavLink>
+        <NavLink className={linkClass} to="/perfil"><FaUser /> <span>Perfil</span></NavLink>
+        <NavLink className={linkClass} to="/desafios"><FaTrophy /> <span>Desafíos</span></NavLink>
+        <NavLink className={linkClass} to="/configuracion"><FaCog /> <span>Configuración</span></NavLink>
         {!state.isLoggedIn && (
-          <NavLink className={linkClass} to="/login">
-            <FaSignInAlt /> <span>Iniciar sesión</span>
-          </NavLink>
+          <NavLink className={linkClass} to="/login"><FaSignInAlt /> <span>Iniciar sesión</span></NavLink>
         )}
       </nav>
 

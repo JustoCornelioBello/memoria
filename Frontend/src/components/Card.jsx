@@ -13,41 +13,44 @@ function cx(...c) {
  * - wrong (bool)
  * - onFlip(index)
  */
-function Card({ index, data, isFlipped, isMatched, wrong, onFlip }) {
+export default function Card({
+  index,
+  data,           // { key, face } => face es el emoji/objeto
+  isFlipped,      // ¿está volteada?
+  isMatched,      // ¿ya está emparejada?
+  wrong,          // animación de error si quieres
+  onFlip,         // callback al click
+}) {
+  const classes = [
+    "memory-card",
+    isFlipped ? "flipped" : "",
+    isMatched ? "ok" : "",
+    wrong ? "wrong" : "",
+  ].join(" ").trim();
+
   const handleClick = () => {
-    if (isMatched) return;       // ya emparejada
-    if (typeof onFlip === "function") onFlip(index);
+    if (isMatched || isFlipped) return; // no permitir click en emparejadas o ya abiertas
+    onFlip?.(index);
   };
 
   return (
     <button
       type="button"
-      className={cx(
-        "memory-card",
-        isFlipped && "flipped",
-        isMatched && "ok",
-        wrong && "wrong"
-      )}
+      className={classes}
       onClick={handleClick}
-      aria-label={isFlipped ? `Carta ${data?.symbol || ""}` : "Carta oculta"}
+      aria-label={isFlipped || isMatched ? `Carta ${data?.face}` : "Carta oculta"}
     >
       <div className="card-inner">
-        {/* Cara visible inicial */}
+        {/* Frente (oculto): SIN “?” – ponemos un placeholder neutro */}
         <div className="card-front">
-          {/* Diseño del reverso para que “se vea” aunque no esté volteada */}
-          <div className="card-backdrop">
-            <div className="card-pattern" />
-            <span className="card-mark">★</span>
-          </div>
+          <span className="placeholder" aria-hidden="true">🧩</span>
         </div>
 
-        {/* Cara con el símbolo (se ve al voltear) */}
+        {/* Dorso (contenido real): el emoji/objeto */}
         <div className="card-back">
-          <span className="card-emoji">{data?.symbol || "❓"}</span>
+          <span className="emoji" role="img" aria-label="objeto">{data?.face}</span>
         </div>
       </div>
     </button>
   );
 }
-
-export default memo(Card);

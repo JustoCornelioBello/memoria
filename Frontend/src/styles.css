@@ -460,3 +460,157 @@ main{
   box-shadow: var(--shadow-1);
   border: 1px solid rgba(255,255,255,.08);
 }
+
+
+
+
+
+
+/* ===== Settings: look pro ===== */
+.settings-page .glass{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+.settings-hero{
+  background:
+    linear-gradient(135deg, rgba(59,130,246,.22), rgba(99,102,241,.18)),
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+}
+
+.section-title{
+  font-weight: 800;
+  letter-spacing: .2px;
+  margin-bottom: 12px;
+}
+
+/* Avatar grande usado en configuración */
+.profile-avatar.xl{
+  width: 76px; height: 76px;
+  border-radius: 22px;
+  display: grid; place-items: center;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03)),
+    linear-gradient(135deg, rgba(108,92,231,.30), rgba(34,193,195,.22));
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 12px 28px rgba(0,0,0,.14);
+}
+
+/* Botón tipo toggle elegante */
+.btn-toggle{
+  border-radius: 12px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.10);
+  padding: .7rem 1rem;
+}
+
+.opacity-80{ opacity: .8; }
+
+/* Toast minimalista */
+.toast-fx{
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  padding: .75rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.18);
+  z-index: 1080;
+  display: flex; align-items: center;
+  font-weight: 600;
+}
+.toast-fx.success{
+  background: #e8fff1;
+  color: #156a3a;
+  border: 1px solid #b7f0cc;
+}
+.toast-fx.error{
+  background: #fff0f0;
+  color: #7a1e1e;
+  border: 1px solid #f3b9b9;
+}
+
+/* Modal (nitidez y opacidad ya las definiste) */
+.custom-backdrop{ background-color: rgba(0,0,0,.55)!important; }
+.modal-opaque{ background:#fff!important; }
+.modal-crisp{
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  animation: modalEnter .22s ease both;
+}
+@keyframes modalEnter {
+  from { opacity:0; transform: translateY(6px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+
+
+/* ===== Topbar (solo móviles) ===== */
+.topbar{
+  position: sticky; top: 0; z-index: 1020;
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,.6);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  padding: 6px 0;
+}
+.topbar .brand-mini{
+  font-weight: 800; text-decoration: none; color: #111;
+}
+.topmenu{
+  display: grid;
+  grid-auto-rows: 44px;
+  padding: 6px 12px 12px;
+  background: rgba(255,255,255,.9);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.topmenu .menu-link{
+  display: flex; align-items: center; gap: 10px;
+  color: #111; text-decoration: none; border-radius: 10px;
+  padding: 8px 10px;
+}
+.topmenu .menu-link.active{ background: rgba(17,17,17,.06); }
+
+/* ===== Transición suave de pantalla ===== */
+.route-animate{
+  animation: routeFade .25s ease both;
+}
+@keyframes routeFade {
+  from{ opacity: 0; transform: translateY(6px); }
+  to{   opacity: 1; transform: translateY(0); }
+}
+
+/* Pequeños refinamientos */
+.badge.bg-primary-subtle { background:#e6f0ff!important; color:#1f4fbf!important; }
+.badge.bg-warning { background:#ffec99!important; color:#6c4a00!important; }
+.progress .progress-bar{ transition: width .4s ease; }
+
+/* Sidebar sigue como lo tenías; para Desktop ya estaba bien */
+
+
+
+
+
+
+/* Placeholder frontal más sutil (sin texto borroso) */
+.memory-card .card-front .placeholder{
+  opacity: .35;
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+}
+
+/* Cuando está emparejada, queda “fija” y sin eventos */
+.memory-card.ok{
+  pointer-events: none;
+}
+.memory-card.ok .card-back{
+  /* asegúrate que luzca clara */
+  opacity: 1;
+  filter: none;
+  outline: 3px solid #28a745; /* ya lo tenías en tu theme */
+}
