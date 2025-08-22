@@ -10,6 +10,17 @@ export default function MusicPlayer() {
     ref.current.volume = state.musicVol ?? 0.4;
   }, [state.musicVol]);
 
+
+
+    const playMusic = () => {
+    audioRef.current.play().catch(err => {
+      console.log("Autoplay bloqueado:", err);
+    });
+  };
+
+
+
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -24,11 +35,7 @@ export default function MusicPlayer() {
   }, [state.musicOn]);
 
   return (
-    <audio
-      ref={ref}
-      preload="auto"
-      src="/assets/music/track1.mp3" // coloca tu mp3 aquí
-      style={{ display: "none" }}
-    />
+    <audio ref={ref} src="/music/island_cove.mp3" preload="auto" />
+
   );
 }

@@ -46,7 +46,7 @@ export default function HUD({ onHint, onMegaHint }) {
             />
           ))}
           {state.lives < state.livesCap && (
-            <span className="badge bg-dark-subtle text-light ms-2">
+            <span className="badge bg-dark text-light ms-2">
               +1 en {fmt(heartLeft)}
             </span>
           )}
@@ -70,7 +70,7 @@ export default function HUD({ onHint, onMegaHint }) {
             </button>
           )}
           {state.hints < state.hintsCap && (
-            <span className="badge bg-dark-subtle text-light">
+            <span className="badge bg-dark text-light">
               +1 en {fmt(hintLeft)}
             </span>
           )}
