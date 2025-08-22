@@ -1,0 +1,462 @@
+/* ================================
+   Tema & Base
+==================================*/
+:root{
+  /* Paleta moderna */
+  --brand-1: #6c5ce7;
+  --brand-2: #a363d9;
+  --brand-3: #22c1c3;
+  --brand-4: #fdbb2d;
+
+  --bg-1: #0e0f14;     /* fondo app oscuro elegante */
+  --bg-2: #141724;     /* paneles */
+  --bg-3: #1b1f32;     /* tarjetas elevadas */
+
+  --text-1: #f7f8ff;   /* texto principal */
+  --text-2: #c7c9d9;   /* texto secundario */
+  --muted:  #8c90a5;
+
+  --ok:    #2ecc71;
+  --warn:  #f1c40f;
+  --error: #ff4d4f;
+
+  /* Cartas */
+  --card-min: 78px;             /* mínimo por carta (puedes subir/bajar) */
+  --card-max: 118px;            /* máximo por carta */
+  --card-radius: 16px;
+  --emoji-min: 1.7rem;
+  --emoji-max: 2.6rem;
+
+  /* Efectos */
+  --shadow-1: 0 8px 30px rgba(0,0,0,.28);
+  --shadow-2: 0 10px 40px rgba(0,0,0,.35);
+  --ring-1: 0 0 0 2px rgba(255,255,255,.05), 0 12px 28px rgba(0,0,0,.25);
+}
+
+html,body{ height:100%; }
+body{
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(108,92,231,.25), transparent 60%),
+    radial-gradient(900px 500px at 110% 20%, rgba(34,193,195,.18), transparent 60%),
+    linear-gradient(180deg, #0b0c12, #121627);
+  color: var(--text-1);
+}
+
+/* =================================
+   Layout general
+===================================*/
+.app-bg{
+  background: transparent; /* usamos el body como fondo */
+  font-family: 'poppins', sans-serif;
+}
+
+main{
+  min-height: 100vh;
+}
+
+/* =================================
+   Sidebar moderno
+===================================*/
+.sidebar{
+  width: 280px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+    linear-gradient(135deg, rgba(108,92,231,.18), rgba(34,193,195,.10));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255,255,255,.08);
+  color: var(--text-1);
+  box-shadow: var(--shadow-1);
+}
+
+.sidebar .brand{
+  display:flex; align-items:center; gap:.8rem;
+  padding: .4rem .2rem 1rem;
+  border-bottom: 1px dashed rgba(255,255,255,.08);
+  margin-bottom: 1rem;
+}
+.brand .logo{
+  width: 44px; height: 44px; border-radius: 14px;
+  background: conic-gradient(from 210deg at 50% 50%, var(--brand-1), var(--brand-3), var(--brand-2));
+  box-shadow: inset 0 0 24px rgba(255,255,255,.12), var(--ring-1);
+}
+.brand h4{
+  margin:0; font-weight:800; letter-spacing:.4px;
+  background: linear-gradient(90deg, #fff, #c7b8ff);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.sidebar .nav .link{
+  display:flex; align-items:center; gap:.75rem;
+  border-radius: 12px;
+  padding: .75rem .9rem;
+  color: var(--text-2);
+  text-decoration:none;
+  transition: all .18s ease;
+  border: 1px solid transparent;
+}
+.sidebar .nav .link:hover{
+  color: #fff;
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.08);
+  transform: translateY(-1px);
+}
+.sidebar .nav .link.active{
+  color:#fff;
+  background: linear-gradient(180deg, rgba(108,92,231,.22), rgba(108,92,231,.08));
+  border-color: rgba(108,92,231,.35);
+  box-shadow: 0 8px 20px rgba(108,92,231,.25);
+}
+
+.sidebar .footer{
+  margin-top:auto; padding-top:1rem;
+  border-top: 1px dashed rgba(255,255,255,.08);
+  color: var(--muted);
+}
+
+/* =================================
+   Tarjetas / contenedores
+===================================*/
+.card{
+  background: var(--bg-2);
+  color: var(--text-1);
+  border: 1px solid rgba(255,255,255,.06) !important;
+  border-radius: 18px !important;
+  box-shadow: var(--shadow-1);
+}
+
+
+
+
+
+
+/* --- Garantías visuales para que SIEMPRE se vean --- */
+.memory-card{
+  display: block;                 /* evita colapsos de inline-block en grids raros */
+  width: 100%;
+  min-width: var(--card-min);     /* nunca menor al mínimo */
+}
+
+.memory-card .card-front{
+  position: relative;
+  overflow: hidden;               /* para el patrón del reverso */
+}
+
+.card-backdrop{
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  pointer-events: none;
+}
+
+.card-pattern{
+  position: absolute; inset: -20%;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(255,255,255,.08), transparent 40%) 0 0 / 24px 24px,
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,.06), transparent 40%) 0 0 / 24px 24px,
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  filter: saturate(1.1);
+}
+
+.card-mark{
+  position: relative;
+  z-index: 1;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,.65);
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
+}
+
+/* Asegura contraste del lado del emoji */
+.memory-card .card-back{
+  color: #fff;                                        /* emoji/texto visible */
+  background:
+    radial-gradient(600px 260px at 50% -40%, rgba(255,255,255,.22), transparent 70%),
+    linear-gradient(180deg, #171b31, #0f1428);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.card-emoji{
+  display:inline-block;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Si algún navegador ignora aspect-ratio, fuerza altura */
+@supports not (aspect-ratio: 1 / 1){
+  .memory-card .card-inner{ padding-top: 100%; height: 0; }
+  .memory-card .card-front, .memory-card .card-back{ position:absolute; inset:0; }
+}
+
+
+
+
+
+
+
+
+
+
+
+.shadow-sm{ box-shadow: var(--shadow-1) !important; }
+
+/* =================================
+   HUD mejorado
+===================================*/
+.hud{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.08) !important;
+}
+
+.hud .progress{
+  height: 22px; border-radius: 999px; overflow: hidden;
+  background: rgba(255,255,255,.08);
+  box-shadow: inset 0 2px 8px rgba(0,0,0,.2);
+}
+.hud .progress-bar{
+  background: linear-gradient(90deg, var(--brand-3), var(--brand-1));
+  animation: barFlow 2.4s linear infinite;
+  font-weight: 700;
+}
+@keyframes barFlow{
+  0%{ filter: brightness(1); }
+  50%{ filter: brightness(1.15); }
+  100%{ filter: brightness(1); }
+}
+
+/* Corazones que palpitan suavemente */
+.heart{
+  filter: drop-shadow(0 3px 10px rgba(255,0,83,.25));
+  transform-origin: center;
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+.heart.dim{ opacity:.3; filter:none; animation:none; }
+
+@keyframes heartbeat{
+  0%, 100%{ transform: scale(1); }
+  12%{ transform: scale(1.18); }
+  24%{ transform: scale(1.08); }
+  36%{ transform: scale(1.22); }
+  48%{ transform: scale(1); }
+}
+
+/* =================================
+   Grid & Cartas con micro-interacciones
+===================================*/
+.memory-grid{
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-min), var(--card-max)));
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.memory-card{
+  perspective: 900px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  transition: transform .18s ease, filter .18s ease;
+}
+.memory-card:hover{
+  transform: translateY(-3px);
+  filter: brightness(1.02);
+}
+
+.memory-card .card-inner{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .45s cubic-bezier(.2,.8,.2,1);
+}
+
+.memory-card .card-front,
+.memory-card .card-back{
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  backface-visibility: hidden;
+  border-radius: var(--card-radius);
+  box-shadow: 0 10px 26px rgba(0,0,0,.28);
+}
+
+.memory-card .card-front{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+    linear-gradient(135deg, rgba(108,92,231,.14), rgba(34,193,195,.10));
+  border: 1px solid rgba(255,255,255,.06);
+}
+.memory-card .card-back{
+  background:
+    radial-gradient(400px 160px at 50% -30%, rgba(255,255,255,.18), transparent 70%),
+    linear-gradient(180deg, #12162a, #151a32);
+  border: 1px solid rgba(255,255,255,.08);
+  transform: rotateY(180deg);
+  font-size: clamp(var(--emoji-min), 2.6vw, var(--emoji-max));
+  text-shadow: 0 4px 24px rgba(0,0,0,.35);
+}
+
+.memory-card.flipped .card-inner{ transform: rotateY(180deg); }
+.memory-card.ok .card-back{
+  outline: 2px solid var(--ok);
+  box-shadow: 0 0 0 4px rgba(46,204,113,.12), 0 16px 38px rgba(46,204,113,.25);
+  animation: pulseOk .9s ease;
+}
+.memory-card.wrong .card-back{
+  outline: 2px solid var(--error);
+  box-shadow: 0 0 0 4px rgba(255,77,79,.12), 0 16px 38px rgba(255,77,79,.25);
+  animation: shake .7s ease;
+}
+
+@keyframes pulseOk{ 0%{ transform: scale(1);} 50%{ transform: scale(1.06);} 100%{ transform: scale(1);} }
+@keyframes shake{
+  0%,100%{ transform: translateX(0); }
+  20%{ transform: translateX(-7px); }
+  40%{ transform: translateX(7px); }
+  60%{ transform: translateX(-5px); }
+  80%{ transform: translateX(5px); }
+}
+
+/* =================================
+   Animaciones genéricas
+===================================*/
+.animate-fade-in{ animation: fadeIn .5s ease both; }
+@keyframes fadeIn{ from{ opacity: 0; transform: translateY(6px);} to{ opacity: 1; transform: translateY(0);} }
+
+.animate-pop{ animation: pop .35s ease both; }
+@keyframes pop{ from{ transform: scale(.96); opacity: 0;} to{ transform: scale(1); opacity: 1;} }
+
+/* =================================
+   Modal nítido y opaco (ya implementado)
+===================================*/
+.custom-backdrop { background-color: rgba(0,0,0,.55) !important; }
+.modal-opaque { background:#0f1326 !important; border:1px solid rgba(255,255,255,.08); }
+.modal-crisp{ will-change:opacity, transform; transform: translateZ(0); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; animation: modalEnter .22s ease both; }
+@keyframes modalEnter { from{ opacity:0; transform: translateY(6px);} to{ opacity:1; transform: translateY(0);} }
+
+.animate-pop-precise { animation: popPrecise .28s ease both; }
+@keyframes popPrecise { 0%{ opacity:0; transform: translateY(4px);} 100%{ opacity:1; transform: translateY(0);} }
+
+.reward-wrapper { perspective: 900px; }
+.reward-card {
+  display:inline-flex; flex-direction:column; align-items:center; justify-content:center;
+  min-width: 240px; padding: 16px 18px; border-radius: 16px;
+  background: linear-gradient(180deg,#161b33 0,#101528 100%);
+  color: var(--text-1);
+  box-shadow: var(--shadow-2);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.reward-icon { font-size: 2rem; line-height: 1; margin-bottom: 6px; }
+.reward-title { font-weight: 800; font-size: 1.1rem; }
+
+.animate-reward-pop { animation: rewardPop .45s cubic-bezier(.2,.9,.2,1) both; will-change: transform, opacity; transform: translateZ(0); }
+@keyframes rewardPop { 0%{ opacity:0; transform: translateY(12px) rotateX(8deg) scale(.96);} 60%{ opacity:1; transform: translateY(0) rotateX(0) scale(1.05);} 100%{ opacity:1; transform: translateY(0) rotateX(0) scale(1);} }
+
+
+
+
+
+/* ================================
+   Overlay de Espera (cargando hasta +1 vida)
+==================================*/
+.wait-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: grid;
+  place-items: center;
+  z-index: 9998;
+}
+
+.wait-card{
+  background: linear-gradient(180deg,#161b33 0,#101528 100%);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  padding: 24px 28px;
+  min-width: 280px;
+  text-align: center;
+  box-shadow: 0 14px 40px rgba(0,0,0,.35);
+}
+
+.wait-spinner{
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,.18);
+  border-top-color: #6c5ce7;
+  margin: 0 auto 12px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin{
+  to { transform: rotate(360deg); }
+}
+
+.wait-timer{
+  font-weight: 800;
+  letter-spacing: .5px;
+  font-size: 1.6rem;
+}
+
+
+
+
+
+
+
+/* ====== TIENDA ====== */
+.shop-card{
+  background: var(--bg-2);
+  color: var(--text-1);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: var(--shadow-1);
+  transition: transform .15s ease, box-shadow .15s ease;
+  min-height: 180px; /* altura fija mínima para evitar saltos */
+}
+.shop-card:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+
+.item-icon{
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center; /* centra el ícono perfecto */
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: inset 0 0 18px rgba(255,255,255,.04);
+  font-size: 18px; /* tamaño del icono react-icons */
+  line-height: 0;  /* evita desplazamiento vertical */
+}
+
+.shop-desc{
+  opacity: .9;
+  min-height: 44px; /* espacio para 1-2 líneas, evita reflow */
+}
+
+.shop-foot{
+  margin-top: 8px;
+  opacity: .7;
+  font-size: .9rem;
+}
+
+
+
+
+/* Perfil */
+.profile-avatar{
+  width: 64px; height: 64px;
+  border-radius: 18px;
+  display: grid; place-items: center;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03)),
+    linear-gradient(135deg, rgba(108,92,231,.25), rgba(34,193,195,.18));
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  box-shadow: var(--shadow-1);
+  border: 1px solid rgba(255,255,255,.08);
+}
