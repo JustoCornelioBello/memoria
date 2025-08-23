@@ -17,21 +17,21 @@ export default function ChestModal({ show, onOpen }) {
 
   return (
     <div className="modal-backdrop show custom-backdrop">
-      <div className="modal d-block" tabIndex="-1" role="dialog">
+      <div className="modal bg-dark d-block" tabIndex="-1" role="dialog">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content modal-opaque modal-crisp">
-            <div className="modal-header">
+            <div className="modal-header " style={{background:'black', color:'white'}}>
               <h5 className="modal-title d-flex align-items-center gap-2">
                 <FaGift /> Cofre de recompensa
               </h5>
             </div>
 
-            <div className="modal-body text-center">
+            <div className="modal-body bg-primary text-white text-center">
               {!reward ? (
                 <>
                   <p className="mb-2">Toca para abrir y ver tu premio aleatorio.</p>
-                  <button className="btn btn-primary animate-pop-precise" onClick={onOpen}>
-                    <FaStar className="me-2" /> Abrir cofre
+                  <button className="btn btn-primary bg-danger animate-pop-precise" onClick={onOpen}>
+                    <FaStar className="me-2 " /> Abrir cofre
                   </button>
                   <div className="display-4 mt-3">🎁</div>
                 </>
@@ -53,9 +53,9 @@ export default function ChestModal({ show, onOpen }) {
               )}
             </div>
 
-            <div className="modal-footer justify-content-center">
+            <div className="modal-footer bg-dark justify-content-center">
               {!reward && (
-                <button className="btn btn-link text-muted" onClick={denyReward}>
+                <button className="btn btn-link text-white" onClick={denyReward}>
                   No ahora
                 </button>
               )}

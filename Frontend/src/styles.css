@@ -614,3 +614,45 @@ main{
   filter: none;
   outline: 3px solid #28a745; /* ya lo tenías en tu theme */
 }
+
+
+
+
+/* ===== Acordeón legal/ayuda ===== */
+.acc-item{
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+  margin-bottom: 10px;
+}
+.acc-head{
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  background: rgba(255,255,255,.08);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-weight: 700;
+}
+.acc-head:hover{ background: rgba(255,255,255,.12); }
+.acc-caret{ font-size: 1.2rem; line-height: 1; opacity: .75; }
+
+.acc-body{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .28s ease, padding .28s ease;
+  padding: 0 14px;
+}
+.acc-body.open{
+  max-height: 420px;   /* suficiente para texto mediano */
+  padding: 12px 14px 14px;
+}
+.acc-subtitle{ margin-bottom: 8px; }
+
+/* Botones sociales/contacto */
+.btn-outline-secondary svg,
+.btn-outline-primary svg { opacity: .9; }

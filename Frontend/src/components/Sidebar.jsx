@@ -25,7 +25,7 @@ export default function Sidebar() {
         )}
       </nav>
 
-      <div className="footer small">v1.0 · hecho con ❤️</div>
+      <div className="footer small">v1.0 · hecho con ❤️ por justoCornelio</div>
     </aside>
   );
 }

@@ -27,7 +27,7 @@ export default function WaitOverlay() {
       <div className="wait-card animate-pop">
         <div className="wait-spinner" />
         <h4 className="mb-2">Recuperando una vida…</h4>
-        <p className="text-muted mb-3">Se añadirá automáticamente cuando el contador llegue a cero.</p>
+        <p className="text-white mb-3">Se añadirá automáticamente cuando el contador llegue a cero.</p>
         <div className="wait-timer">{fmtMMSS(remaining)}</div>
         <button className="btn btn-outline-light mt-3" onClick={cancelWaitingForLife}>
           Cancelar espera
