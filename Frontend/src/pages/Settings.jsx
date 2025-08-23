@@ -293,7 +293,7 @@ export default function Settings() {
         <Acc
           id="terms"
           icon={<FaFileContract />}
-          title={<span> <strong className="ms-2">Términos de uso</strong></span>}
+          title={<span> <strong className="ms-2 text-white">Términos de uso</strong></span>}
           subtitle={<span className="small opacity-75">Última actualización: 2025-08-01</span>}
         >
           <ul className="list-unstyled mb-2">
@@ -307,10 +307,10 @@ export default function Settings() {
         </Acc>
 
         <Acc
-          id="privacy"
+          id="privacy" 
           icon={<FaUserShield />}
-          title={<span> <strong className="ms-2">Política de privacidad</strong></span>}
-          subtitle={<span className="small opacity-75">Última actualización: 2025-08-01</span>}
+          title={<span> <strong className="ms-2 text-white">Política de privacidad</strong></span>}
+          subtitle={<span className="small opacity-75 ">Última actualización: 2025-08-01</span>}
         >
           <ul className="list-unstyled mb-2">
             <li className="mb-1"><FaInfoCircle className="me-2 opacity-75"/> Guardamos tus datos de juego en tu navegador (localStorage).</li>
